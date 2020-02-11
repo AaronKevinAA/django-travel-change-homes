@@ -6,5 +6,4 @@ You can also find a house to live in
 ------------------------------------------------------------------
 Home page, house details page, personal center page, 
 landing registration page, and background.
-https://raw.githubusercontent.com/AaronKevinAA/my-image/master/XXX-detail.png?token=AMSILQK6B7BK5BXKENK6EHK6IKQAE
-
+![image](https://github.com/AaronKevinAA/my-image/blob/master/XXX.png)
