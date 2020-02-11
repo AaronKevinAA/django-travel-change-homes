@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>XXX - 个人信息</title>
+    <link rel="stylesheet" href="/static/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="/static/bootstrap/css/bootstrap-grid.css">
+    <link rel="stylesheet" href="/static/bootstrap/css/bootstrap-reboot.css">
+    <link rel="stylesheet" href="/static/css/personinfo.css">
+</head>
+
+<body>
+{% include 'header.html' %}
+<main role="main">
+    <div class="album py-5 bg-light">
+
+        <div class="container" style="min-height: 700px;">
+            <div class="row">
+                <div class="col-3">
+                    <ul class="nav nav-pills nav-justified flex-column" style="background-color: #eeeeee">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="/pinfo/">个人资料</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/pinfo/modify/">编辑个人资料</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/pinfo/myhome/">编辑我的房屋</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/pinfo/mypublish/">我的发布记录</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/pinfo/mydeal/">我的交易记录</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-9">
+                    <div class="tab-content" id="v-pills-tabContent">
+                        <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel"
+                             style="margin-bottom: 30px"
+                             aria-labelledby="v-pills-home-tab">
+                            <img src="/static/uploads/{{ head_img }}"
+                                 style="border-radius: 50%;width: 100px;height: 100px;margin-bottom: 10px">
+                            <h3>{{ account }}</h3>
+                        </div>
+                        <h6>你的信誉度为：<a style="font-size: 18px;color: goldenrod;font-weight: bold">{% if credit >= 90 %}优秀{% elif credit >= 75 and credit < 90 %}良好{% elif credit >= 60 and credit < 75 %}普通{% else %}差劲{% endif %}
+                        </a></h6>
+                        <div class="progress" style="width:400px;">
+                            <div class="progress-bar progress-bar-striped bg-warning" role="progressbar"
+                                 style="width: {{ credit }}%" aria-valuenow="{{ credit }}" aria-valuemin="0"
+                                 aria-valuemax="100"></div>
+                        </div>
+                        <p><small style="color: grey">信誉度详细解释<a href="#">点击此处</a></small></p>
+
+                            <h4 style="margin-top: 20px">个人信息<a style="font-size: 12px;color: red">{% if is_rn == "true" %}(已通过实名认证){% elif is_rn == "false" %}(还未实名认证){% endif %}</a><a
+                                    href="#" style="font-size: 12px;margin-left: 10px">编辑个人信息</a></h4>
+                            <div class="dir"></div>
+                        {% if is_rn == "true" %}
+                            <div class="infoitem">
+                                <h6 style="font-weight: bold">性别：</h6><h6>{{rn_sex}}</h6>
+                            </div>
+                            <div class="infoitem">
+                                <h6 style="font-weight: bold">年龄：</h6><h6>{{rn_age}}</h6>
+                            </div>
+                            <div class="infoitem">
+                                <h6 style="font-weight: bold">手机号：</h6><h6>{{rn_phone}}-XXX-XXXX</h6>
+                            </div>
+                            <div class="infoitem">
+                                <h6 style="font-weight: bold">真实姓名：</h6><h6>{{rn_name}}</h6>
+                            </div>
+                            <div class="infoitem">
+                                <h6 style="font-weight: bold">身份证号：</h6><h6>XXXXXXXXXXX{{rn_idnumber}}</h6>
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+{% include 'footer.html' %}
+<script src="https://use.fontawesome.com/dd015894c4.js"></script>
+<script src="/static/js/jquery.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.15.0/umd/popper.min.js"
+        integrity="sha384-L2pyEeut/H3mtgCBaUNw7KWzp5n9+4pDQiExs933/5QfaTh8YStYFFkOzSoXjlTb"
+        crossorigin="anonymous"></script>
+
+<script src="/static/bootstrap/js/bootstrap.js"></script>
+<script src="/static/bootstrap/js/bootstrap.bundle.js"></script>
+<script src="https://cdn.staticfile.org/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+</body>
+</html>

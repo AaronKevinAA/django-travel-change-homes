@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>XXX - 我的发布详细记录</title>
+    <link rel="stylesheet" href="/static/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="/static/bootstrap/css/bootstrap-grid.css">
+    <link rel="stylesheet" href="/static/bootstrap/css/bootstrap-reboot.css">
+    <link rel="stylesheet" href="/static/css/personinfo.css">
+</head>
+
+<body>
+{% include 'header.html' %}
+<main role="main">
+    <div class="album py-5 bg-light">
+
+        <div class="container" style="min-height: 700px;">
+            <div class="row">
+                <div class="col-3">
+                    <ul class="nav nav-pills nav-justified flex-column" style="background-color: #eeeeee">
+                                               <li class="nav-item">
+                            <a class="nav-link " href="/pinfo/">个人资料</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/pinfo/modify/">编辑个人资料</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/pinfo/myhome/">编辑我的房屋</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="/pinfo/mypublish/">我的发布记录</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/pinfo/mydeal/">我的交易记录</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-9">
+                    <div class="tab-content" id="v-pills-tabContent">
+                        <h4>发布房屋详情</h4>
+                        <div class="dir"></div>
+                        <h6>标题：{{publish_date.title}}</h6>
+                        <h6>地址：{{home_date.location}}</h6>
+                        <h6>房屋照片：</h6>
+                        {% for i in img %}
+                        <img src="/static/uploads/{{i.image}}" alt="..." style="width: 150px;height: 150px;" class="img-thumbnail">
+                        {% endfor %}
+                        <h6>房屋面积：{{home_date.area}}平方米</h6>
+                        <h6>房屋类型：{{ home_date.type }}</h6>
+                        <h6>家具设施：{{publish_date.facilities}}</h6>
+                        <h6>周边路段：{{publish_date.situation_desc}}</h6>
+                        <h6>房屋闲置时间：{{publish_date.start_date}} - {{publish_date.end_date}}</h6>
+                        <h6>价格：{{publish_date.price}}元/每晚</h6>
+                        <h6>房屋准则:{{publish_date.role}}</h6>
+{#                        <h4 style="margin-top: 20px">交易记录<a style="font-size: 12px;margin-left: 10px;">对订单有疑问？<a href="#" style="font-size: 12px;">点击此处</a></a></h4>#}
+{#                         <div class="dir"></div>#}
+{#                        <h6>入住客人：兔兔宝贝</h6>#}
+{#                        <h6>入住客人联系方式：138-3211-5240</h6>#}
+{#                        <h6>入住时间：2019/11/10</h6>#}
+{#                        <h6>离开时间：2019/11/20</h6>#}
+{#                        <h6>客人已支付费用：500元</h6>#}
+{#                        <a href="#" style="font-size: 12px;">给客人评价</a>#}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+{% include 'footer.html' %}
+<script src="https://use.fontawesome.com/dd015894c4.js"></script>
+<script src="/static/js/jquery.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.15.0/umd/popper.min.js"
+        integrity="sha384-L2pyEeut/H3mtgCBaUNw7KWzp5n9+4pDQiExs933/5QfaTh8YStYFFkOzSoXjlTb"
+        crossorigin="anonymous"></script>
+
+<script src="/static/bootstrap/js/bootstrap.js"></script>
+<script src="/static/bootstrap/js/bootstrap.bundle.js"></script>
+<script src="https://cdn.staticfile.org/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+</body>
+</html>

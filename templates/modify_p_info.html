@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>XXX - 编辑我的个人信息</title>
+    <link rel="stylesheet" href="/static/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="/static/bootstrap/css/bootstrap-grid.css">
+    <link rel="stylesheet" href="/static/bootstrap/css/bootstrap-reboot.css">
+    <link rel="stylesheet" href="/static/css/personinfo.css">
+</head>
+
+<body>
+{% include 'header.html' %}
+<main role="main">
+    <div class="album py-5 bg-light">
+
+        <div class="container" style="min-height: 700px;">
+            <div class="row">
+                <div class="col-3">
+                    <ul class="nav nav-pills nav-justified flex-column" style="background-color: #eeeeee">
+                        <li class="nav-item">
+                            <a class="nav-link " href="/pinfo/">个人资料</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="/pinfo/modify/">编辑个人资料</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/pinfo/myhome/">编辑我的房屋</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/pinfo/mypublish/">我的发布记录</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/pinfo/mydeal/">我的交易记录</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-9">
+                    <div class="tab-content" id="v-pills-tabContent">
+                        <h4>基本信息</h4>
+                        <div class="dir"></div>
+                        <div style="max-width: 450px;">
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="inputGroupFileAddon01">头像上传</span>
+                                </div>
+                                <div class="custom-file">
+                                    <input type="file" class="custom-file-input" id="head_img"
+                                           aria-describedby="inputGroupFileAddon01" >
+                                    <label class="custom-file-label" for="inputGroupFile01">选择图片</label>
+                                </div>
+
+                            </div>
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="inputGroup-sizing-default">账号名：</span>
+                                </div>
+                                <input id="account" type="text" class="form-control" aria-label="Sizing example input"
+                                       aria-describedby="inputGroup-sizing-default">
+                            </div>
+                            <div id="infosuccess" class="alert alert-success " role="alert"
+                                 style="display: none;height: 40px;line-height: 18px;"></div>
+                            <div id="infoerr" class="alert alert-danger " role="alert"
+                                 style="display: none;height: 40px;line-height: 18px;"></div>
+                            <div id="infoloading" style="display: none" class="spinner-grow text-primary spinner-grow-sm" role="status">
+                                        <span class="sr-only">Loading...</span>
+                                    </div>
+                            <button id="infobtn" type="button" class="btn btn-primary"
+                                    style="width: 100px;margin-bottom: 20px;">保存
+                            </button>
+                        </div>
+                        <h4>实名认证</h4>
+                        <div class="dir"></div>
+                        <div style="max-width: 450px;">
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <label class="input-group-text" for="sex">性别*</label>
+                                </div>
+                                <select class="custom-select" id="sex">
+                                    <option value="男" selected>男</option>
+                                    <option value="女">女</option>
+                                </select>
+                            </div>
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="inputGroup-sizing-default">年龄*</span>
+                                </div>
+                                <input id="age" type="text" class="form-control" aria-label="Sizing example input"
+                                       aria-describedby="inputGroup-sizing-default">
+                            </div>
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="inputGroup-sizing-default">手机号*</span>
+                                </div>
+                                <input id="phone" type="tel" class="form-control" aria-label="Sizing example input"
+                                       aria-describedby="inputGroup-sizing-default">
+                            </div>
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="inputGroup-sizing-default">真实姓名*</span>
+                                </div>
+                                <input id="name" type="text" class="form-control" aria-label="Sizing example input"
+                                       aria-describedby="inputGroup-sizing-default">
+                            </div>
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="inputGroup-sizing-default">身份证号*</span>
+                                </div>
+                                <input id="idnumber" type="text" class="form-control" aria-label="Sizing example input"
+                                       aria-describedby="inputGroup-sizing-default">
+                            </div>
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="inputGroupFileAddon01">身份证正面*</span>
+                                </div>
+                                <div class="custom-file">
+                                    <input type="file" class="custom-file-input" id="idfront"
+                                           aria-describedby="inputGroupFileAddon01">
+                                    <label class="custom-file-label" for="inputGroupFile01">选择文件</label>
+                                </div>
+                            </div>
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="inputGroupFileAddon02">身份证反面*</span>
+                                </div>
+                                <div class="custom-file">
+                                    <input type="file" class="custom-file-input" id="idbehind"
+                                           aria-describedby="inputGroupFileAddon02">
+                                    <label class="custom-file-label" for="inputGroupFile02">选择文件</label>
+                                </div>
+                            </div>
+                             <div id="rnerr" class="alert alert-danger " role="alert"
+                                 style="display: none;height: 40px;line-height: 18px;"></div>
+                            <div id="rnsuccess" class="alert alert-success " role="alert"
+                                 style="display: none;height: 40px;line-height: 18px;"></div>
+                            <div id="rnloading" style="display: none" class="spinner-grow text-primary spinner-grow-sm" role="status">
+                                        <span class="sr-only">Loading...</span>
+                                    </div>
+                            <button id="rnbtn" type="button" class="btn btn-primary" style="width: 200px">上传</button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+{% include 'footer.html' %}
+<script src="https://use.fontawesome.com/dd015894c4.js"></script>
+<script src="/static/js/jquery.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.15.0/umd/popper.min.js"
+        integrity="sha384-L2pyEeut/H3mtgCBaUNw7KWzp5n9+4pDQiExs933/5QfaTh8YStYFFkOzSoXjlTb"
+        crossorigin="anonymous"></script>
+<script type="text/javascript" src="/static/bootstrap/js/bs-custom-file-input.js"></script>
+<script type="text/javascript">
+    document.addEventListener('DOMContentLoaded', function () {
+        bsCustomFileInput.init()
+    });
+</script>
+<script src="/static/bootstrap/js/bootstrap.js"></script>
+<script src="/static/js/modify_p_info.js"></script>
+<script src="/static/bootstrap/js/bootstrap.bundle.js"></script>
+<script src="https://cdn.staticfile.org/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+</body>
+</html>

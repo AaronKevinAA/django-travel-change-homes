@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>XXX - 搜索</title>
+    <link rel="stylesheet" href="/static/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="/static/bootstrap/css/bootstrap-grid.css">
+    <link rel="stylesheet" href="/static/bootstrap/css/bootstrap-reboot.css">
+    <link rel="stylesheet" href="/static/css/personinfo.css">
+</head>
+
+<body>
+{% include 'header.html' %}
+<main role="main">
+    <div class="album py-5 bg-light">
+        <div class="container">
+            <div class="row justify-content-between " style="margin-left: 5px;margin-right: 5px;">
+                <h3>{{city}}<a style="font-weight: bold;font-size: 12px;margin-left: 10px;color: #686868">附近的住屋</a></h3>
+                <div class="input-group mb-3 " style="max-width: 400px;">
+                    <div class="input-group-append">
+                        <button class="btn btn-outline-secondary"
+                                style="border-top-left-radius: 3px;border-bottom-left-radius: 3px;width: 40px"><i
+                                class="fa fa-map-marker" aria-hidden="true"></i>
+                        </button>
+                    </div>
+                    <input type="text" class="form-control" placeholder="输入目的地、城市或景点"
+                           aria-describedby="button-addon2">
+
+                    <div class="input-group-append">
+                        <button class="btn btn-outline-secondary"><i class="fa fa-search" aria-hidden="true"
+                        ></i></button>
+                    </div>
+                </div>
+            </div>
+            <div style="height: 1px;width: 100%;background-color: black;margin-bottom: 10px;margin-top: -10px;"></div>
+            <p>
+                <button class="btn btn-outline-info btn-block" type="button" data-toggle="collapse"
+                        data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample"
+                        style="font-weight: bold;font-size: 14px;">
+                    填写更多筛选条件
+                </button>
+            </p>
+            <div class="collapse" id="collapseExample" style="margin-bottom: 20px;">
+                <div class="card card-body">
+                    <ul class="list-group list-group-flush" >
+                        <li class="list-group-item"
+                            style="background-color: transparent;font-size: 14px;font-weight: bold">房屋面积：
+                            <a href="#" style="font-weight: normal;color: black;font-size: 14px;margin-right: 20px;">20m²以下</a>
+                            <a href="#" style="font-weight: normal;color: black;font-size: 14px;margin-right: 20px;">20m²~50m²</a>
+                            <a href="#" style="font-weight: normal;color: black;font-size: 14px;margin-right: 20px;">50m²~100m²</a>
+                            <a href="#" style="font-weight: normal;color: black;font-size: 14px;margin-right: 20px;">50m²~150m²</a>
+                            <a href="#" style="font-weight: normal;color: black;font-size: 14px;margin-right: 20px;">150m²~200m²</a>
+                            <a href="#" style="font-weight: normal;color: black;font-size: 14px;margin-right: 20px;">200m²以上</a>
+                        </li>
+                        <li class="list-group-item"
+                            style="background-color: transparent;font-size: 14px;font-weight: bold">房屋类型：
+                            <a href="#" style="font-weight: normal;color: black;font-size: 14px;margin-right: 20px;">单间</a>
+                            <a href="#" style="font-weight: normal;color: black;font-size: 14px;margin-right: 20px;">一室一厅</a>
+                            <a href="#" style="font-weight: normal;color: black;font-size: 14px;margin-right: 20px;">两室一厅</a>
+                            <a href="#" style="font-weight: normal;color: black;font-size: 14px;margin-right: 20px;">两室两厅</a>
+                            <a href="#" style="font-weight: normal;color: black;font-size: 14px;margin-right: 20px;">三室一厅</a>
+                            <a href="#" style="font-weight: normal;color: black;font-size: 14px;margin-right: 20px;">三室两厅</a>
+                            <a href="#" style="font-weight: normal;color: black;font-size: 14px;margin-right: 20px;">其他</a>
+                        </li>
+                        <li class="list-group-item"
+                            style="background-color: transparent;font-size: 14px;font-weight: bold">附近商圈：
+                            <a href="#" style="font-weight: normal;color: black;font-size: 14px;margin-right: 20px;">光谷广场</a>
+                            <a href="#" style="font-weight: normal;color: black;font-size: 14px;margin-right: 20px;">街道口</a>
+                            <a href="#" style="font-weight: normal;color: black;font-size: 14px;margin-right: 20px;">江汉路</a>
+                            <a href="#" style="font-weight: normal;color: black;font-size: 14px;margin-right: 20px;">汉正街</a>
+                        </li>
+                        <li class="list-group-item"
+                            style="background-color: transparent;font-size: 14px;font-weight: bold">价格区间：
+                            <a href="#" style="font-weight: normal;color: black;font-size: 14px;margin-right: 20px;">100以下</a>
+                            <a href="#" style="font-weight: normal;color: black;font-size: 14px;margin-right: 20px;">100~150</a>
+                            <a href="#" style="font-weight: normal;color: black;font-size: 14px;margin-right: 20px;">150~200</a>
+                            <a href="#" style="font-weight: normal;color: black;font-size: 14px;margin-right: 20px;">200~300</a>
+                            <a href="#" style="font-weight: normal;color: black;font-size: 14px;margin-right: 20px;">300~500</a>
+                            <a href="#" style="font-weight: normal;color: black;font-size: 14px;margin-right: 20px;">500以上</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="row justify-content-between" style="margin-left: 5px;margin-right: 5px">
+                {% for i in data %}
+                <div class="card bg-dark text-white" style="width: 520px;margin-bottom: 20px;border-color: #686868">
+                    <img src="/static/uploads/{{ i.img }}" class="card-img" alt="..." style="height: 250px;">
+                    <div class="card-img-overlay">
+                        <h4 class="card-title" style="text-shadow: black 2px 2px 2px;">{{i.title}}</h4>
+                        <p class="card-text" style="text-shadow: black 1px 1px 1px;font-size: 15px;">
+                            {{i.situation_desc}},提供{{ i.facilities }}</p>
+                        <p class="card-text" style="text-shadow: grey 1px 1px 1px;"><a href="/details/?homeid={{ i.pid }}"
+                                                                                       style="color: white">详情&nbsp;<i
+                                class="fa fa-angle-double-right" aria-hidden="true"></i></a></p>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            <nav aria-label="Page navigation example" style="margin-top: 10px;">
+                <ul class="pagination justify-content-end">
+                    <li class="page-item">
+                        <a class="page-link" href="#" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
+                    </li>
+                    <li class="page-item"><a class="page-link" href="#">1</a></li>
+                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                    <li class="page-item">
+                        <a class="page-link" href="#" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+
+    </div>
+    </div>
+</main>
+{% include 'footer.html' %}
+<script src="https://use.fontawesome.com/dd015894c4.js"></script>
+<script src="/static/js/jquery.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.15.0/umd/popper.min.js"
+        integrity="sha384-L2pyEeut/H3mtgCBaUNw7KWzp5n9+4pDQiExs933/5QfaTh8YStYFFkOzSoXjlTb"
+        crossorigin="anonymous"></script>
+
+<script src="/static/bootstrap/js/bootstrap.js"></script>
+<script src="/static/bootstrap/js/bootstrap.bundle.js"></script>
+<script src="https://cdn.staticfile.org/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+<script>
+    $('#myCollapsible').collapse({
+        toggle: false
+    })
+</script>
+</body>
+</html>

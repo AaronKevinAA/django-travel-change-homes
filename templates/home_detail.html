@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <title>XXX</title>
+    <link rel="stylesheet" href="/static/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="/static/bootstrap/css/bootstrap-grid.css">
+    <link rel="stylesheet" href="/static/bootstrap/css/bootstrap-reboot.css">
+    <link rel="stylesheet" href="/static/css/index.css">
+
+</head>
+{% include 'header.html' %}
+
+<main role="main">
+    {#    照片栏#}
+    <div class="jumbotron jumbotron-fluid" style="height: 500px;margin: 0px;padding: 0px;">
+        <div class="row" style="">
+            {% for img in image %}
+                {% if forloop.first %}
+                    <div class="col-6" style="height: 100%;padding: 0;border: black">
+                        <img src="/static/uploads/{{ img.image }}" alt="" style="width: 100%;height: 500px;">
+                    </div>
+                {% endif %}
+            {% endfor %}
+            <div class="row" style="width: 50%;margin: 0">
+                {% for i in image %}
+                    {% if forloop.first %}
+                    {% else %}
+                        <div class="col-6" style="width: 50%;padding: 0;">
+                            <img src="/static/uploads/{{ i.image }}" alt="" style="width: 100%;height: 250px;">
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    <div class=" bg-light" style="padding-top: 10px;padding-bottom: 20px ">
+        <div class="container " syle="margin-top: 0">
+            <div class="row">
+                <div class="col-8">
+                    <ul class="nav nav-tabs" id="myTab" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab"
+                               aria-controls="home" aria-selected="true" style="font-weight: bold">详情</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="owner-tab" data-toggle="tab" href="#owner" role="tab"
+                               aria-controls="owner" aria-selected="false" style="font-weight: bold">联系房主</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab"
+                               aria-controls="profile" aria-selected="false" style="font-weight: bold">评价</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link disabled" id="contact-tab" data-toggle="tab" href="#contact" role="tab"
+                               aria-controls="contact" aria-selected="false">举报</a>
+                        </li>
+                    </ul>
+                    <div class="tab-content" id="myTabContent">
+                        <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab"
+                             style="padding-top: 20px;">
+                            <h6 style="font-size:12px;font-weight: bold">{{ data.location }}</h6>
+                            <h2 istyle="font-weight: bold">{{ data.title }}</h2>
+                            <div class="row" style="margin-top: 20px;margin-bottom: 20px">
+                                <i class="fa fa-bed" aria-hidden="true"
+                                   style="margin-left: 15px;">&nbsp;<a>{{ data.home_type }}</a></i>
+                            </div>
+                            <p style="font-size:16px;"><a class="font-weight-bold">闲屋时间：</a>
+                                <mark>{{ data.start_date }}-{{ data.end_date }}</mark>
+                            </p>
+                            <p style="font-size:16px;"><a class="font-weight-bold">住屋附近：</a>{{ data.situation_desc }}
+                            </p>
+                            <div style="height: 1px;background-color: black;opacity: 0.2;width: 100%;margin-bottom: 15px;"></div>
+                            <div class="row justify-content-start " style="margin-left: 10px;">
+                                {% if '淋浴' in data.facilities %}
+                                    <div style="min-width: 70px;"><i class="fa fa-shower"
+                                                                     style="font-size: 40px;opacity: 0.7;"></i>
+                                        <p style="font-size: 14px;font-weight: bold;">淋浴</p></div>
+                                {% endif %}
+                                {% if 'wifi' in data.facilities %}
+                                    <div style="min-width: 70px;"><i class="fa fa-wifi"
+                                                                     style="font-size: 40px;opacity: 0.7;"></i>
+                                        <p style="font-size: 14px;font-weight: bold">WIFI</p></div>
+                                {% endif %}
+                                {% if '电视机' in data.facilities %}
+                                    <div style="min-width: 70px;"><i class="fa fa-tv"
+                                                                     style="font-size: 40px;opacity: 0.7;"></i>
+                                        <p style="font-size: 14px;font-weight: bold">电视机</p></div>
+                                {% endif %}
+                                {#                                <i class="fa fa-shower" style="margin-right: 20px;font-size: 40px;opacity: 0.7;"></i><i class="fa fa-wifi"style="margin-right: 20px;font-size: 40px;opacity: 0.7;"></i><i class="fa fa-tv"style="margin-right: 20px;font-size: 40px;opacity: 0.7;"></i>#}
+                            </div>
+                            <div style="height: 1px;background-color: black;opacity: 0.2;width: 100%;margin-bottom: 15px;"></div>
+                            <p style="font-size:16px;"><a class="font-weight-bold">房主有话：</a>{{ data.role }}</p>
+                        </div>
+                        <div class="tab-pane fade" id="owner" role="tabpanel" aria-labelledby="owner-tab">
+                            <div class="row align-content-center" style="margin-top: 20px;margin-left: 10px;">
+                                <img src="/static/uploads/{{ home_owner.head_img }}"
+                                     style="border-radius: 50%;width: 70px;height: 70px">
+                                <p style="margin-top: 20px;margin-left: 10px;">{{ home_owner.account }}&nbsp;&nbsp;{% if 'true' in is_rn%}<span
+                                        style="font-size: 12px;font-weight: bold;color:#c69500"><i class="fa fa-check"
+                                                                                                   aria-hidden="true"></i>实名认证</span>{% endif %}
+                                    <span style="font-size: 12px;font-weight: bold;color: #c69500"><i
+                                            class="fa fa-check"
+                                            aria-hidden="true"></i>信誉值：{{ home_owner.credit }}</span></p>
+                            </div>
+                            {#                            <h6 style="font-size: 12px;font-weight: bold;color: grey;margin-left: 10px;margin-top: 10px">#}
+                            {#                                最近上线于三天前</h6>#}
+                            <h6 style="font-size: 16px;font-weight: bold;margin-left: 10px;margin-top: 10px">给房主留言：</h6>
+                            <div class="input-group" style="height: 100px;margin-bottom: 10px;margin-left: 10px;">
+
+                                <textarea class="form-control" aria-label="With textarea"></textarea>
+                            </div>
+                            <a href="#" class="btn btn-primary btn-sm" style="margin-left: 10px">发送</a>
+                        </div>
+                        <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">...</div>
+                    </div>
+                </div>
+                <div class="card" style="width: 18rem;height: 380px;">
+                    <div class="card-body">
+                        <h3 class="card-title" style="color: red">${{ data.price }}<a
+                                style="font-size: 12px;font-weight: bold;color: black">&nbsp;元/每晚</a></h3>
+                        <h6 style="margin-bottom: 15px;font-weight: bold;">入住日期：</h6>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">从</span>
+                            </div>
+                            <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
+                        </div>
+
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">至</span>
+                            </div>
+                            <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
+                        </div>
+                        <h6 style="margin-bottom: 15px;font-weight: bold;">备注：</h6>
+                        <div class="input-group" style="margin-bottom: 20px">
+                            <textarea class="form-control" aria-label="With textarea"></textarea>
+                        </div>
+                        <a href="#" class="btn btn-primary btn-block">房屋预定</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+{% include 'footer.html' %}
+
+
+<script src="https://use.fontawesome.com/dd015894c4.js"></script>
+<script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdn.staticfile.org/popper.js/1.12.5/umd/popper.min.js"></script>
+<script src="/static/bootstrap/js/bootstrap.js"></script>
+<script src="/static/bootstrap/js/bootstrap.bundle.js"></script>
+<script src="https://cdn.staticfile.org/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+
+<script src="/static/js/index.js"></script>
+</html>

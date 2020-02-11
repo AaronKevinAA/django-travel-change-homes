@@ -1,0 +1,13 @@
+.infoitem{
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 5px;
+}
+.dir{
+    height: 1px;
+    width: 100%;
+    background-color: gray;
+    opacity: 0.7;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}

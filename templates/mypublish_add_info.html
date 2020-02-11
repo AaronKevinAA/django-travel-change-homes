@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>XXX - 编辑我的个人信息</title>
+    <link rel="stylesheet" href="/static/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="/static/bootstrap/css/bootstrap-grid.css">
+    <link rel="stylesheet" href="/static/bootstrap/css/bootstrap-reboot.css">
+    <link rel="stylesheet" href="/static/css/personinfo.css">
+</head>
+
+<body>
+{% include 'header.html' %}
+<main role="main">
+    <div class="album py-5 bg-light">
+
+        <div class="container" style="min-height: 700px;">
+            <div class="row">
+                <div class="col-3">
+                    <ul class="nav nav-pills nav-justified flex-column" style="background-color: #eeeeee">
+                        <li class="nav-item">
+                            <a class="nav-link " href="/pinfo/">个人资料</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/pinfo/modify/">编辑个人资料</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/pinfo/myhome/">编辑我的房屋</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="/pinfo/mypublish/">我的发布记录</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/pinfo/mydeal/">我的交易记录</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-9">
+                    <div class="tab-content" id="v-pills-tabContent">
+                        <h4>发布我的房屋</h4>
+                        <div class="dir"></div>
+                        <div style="max-width: 450px;">
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <label class="input-group-text" for="inputGroupSelect01">房屋名*</label>
+                                </div>
+                                <select id="home_name" class="custom-select" id="inputGroupSelect01">
+                                    <option selected value="0">选择房屋名</option>
+                                    {% for home in data %}
+                                    <option value="{{home.name}}">{{ home.name }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">标题*</span>
+                                </div>
+                                <input id="title" type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
+                            </div>
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend" style="margin-right: 10px;">
+                                    <span class="input-group-text" id="inputGroup-sizing-default">家具设施*</span>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input  class="form-check-input" type="checkbox" id="wifi"
+                                           value="option1">
+                                    <label class="form-check-label" for="inlineCheckbox1">wifi</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox" id="shower"
+                                           value="option2">
+                                    <label class="form-check-label" for="inlineCheckbox2">淋浴</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox" id="tv"
+                                           value="option3">
+                                    <label class="form-check-label" for="inlineCheckbox3">电视机</label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <textarea id="situation_desc" class="form-control" id="exampleFormControlTextarea1" rows="3"
+                                          placeholder="填写住屋附近的交通情况以及商圈情况"></textarea>
+                            </div>
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">闲屋时间*</span>
+                                </div>
+                                 <input placeholder="选择起始日期"  type="text" class="form-control datetimepicker-input" id="start_date" data-toggle="datetimepicker" data-target="#datetimepicker4"/>
+                                <div class="input-group-append">
+                                    <span class="input-group-text">至</span>
+                                </div>
+                                 <input placeholder="选择结束日期"  type="text" class="form-control datetimepicker-input" id="end_date" data-toggle="datetimepicker" data-target="#datetimepicker4"/>
+                            </div>
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">价格*</span>
+                                </div>
+                                <input id="price" type="number" class="form-control" aria-label="Amount (to the nearest dollar)">
+                                <div class="input-group-append">
+                                    <span class="input-group-text">元/每晚</span>
+                                </div>
+
+                            </div>
+                            <div class="form-group">
+                                <textarea id="role" class="form-control" id="exampleFormControlTextarea1" rows="3"
+                                          placeholder="填写房屋准则"></textarea>
+                            </div>
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="inputGroupFileAddon01">照片*</span>
+                                </div>
+                                <div class="custom-file">
+                                    <input id="images" type="file" multiple class="custom-file-input" id="inputGroupFile01"
+                                           aria-describedby="inputGroupFileAddon01">
+                                    <label class="custom-file-label" for="inputGroupFile01">选择图片</label>
+                                </div>
+                            </div>
+                        </div>
+<div id="adderr" class="alert alert-danger " role="alert"
+                                 style="display: none;height: 40px;line-height: 18px;"></div>
+                            <div id="addsuccess" class="alert alert-success " role="alert"
+                                 style="display: none;height: 40px;line-height: 18px;"></div>
+                            <div id="addloading" style="display: none" class="spinner-grow text-primary spinner-grow-sm" role="status">
+                                        <span class="sr-only">Loading...</span>
+                                    </div>
+                        <button id="addbtn" type="button" class="btn btn-primary" style="width: 200px">上传</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</main>
+{% include 'footer.html' %}
+<script src="https://use.fontawesome.com/dd015894c4.js"></script>
+<script src="/static/js/jquery.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.15.0/umd/popper.min.js"
+        integrity="sha384-L2pyEeut/H3mtgCBaUNw7KWzp5n9+4pDQiExs933/5QfaTh8YStYFFkOzSoXjlTb"
+        crossorigin="anonymous"></script>
+<script type="text/javascript" src="/static/bootstrap/js/bs-custom-file-input.js"></script>
+<script type="text/javascript">
+    document.addEventListener('DOMContentLoaded', function () {
+        bsCustomFileInput.init()
+    });
+</script>
+<script src="/static/bootstrap/js/bootstrap.js"></script>
+<script src="/static/js/mypublish_add_info.js"></script>
+<script src="/static/bootstrap/js/bootstrap.bundle.js"></script>
+<script src="https://cdn.staticfile.org/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+<script src="https://cdn.bootcss.com/moment.js/2.18.1/moment-with-locales.min.js"></script>
+<link href="https://cdn.bootcss.com/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css" rel="stylesheet" />
+<script src="https://cdn.bootcss.com/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
+</body>
+</html>

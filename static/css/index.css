@@ -1,0 +1,51 @@
+.jumbotron {
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+  margin-bottom: 0;
+  background-color: #fff;
+}
+@media (min-width: 768px) {
+  .jumbotron {
+    padding-top: 6rem;
+    padding-bottom: 6rem;
+  }
+}
+
+.jumbotron p:last-child {
+  margin-bottom: 0;
+}
+
+.jumbotron-heading {
+  font-weight: 300;
+}
+
+.jumbotron .container {
+  max-width: 40rem;
+}
+
+footer {
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+}
+
+footer p {
+  margin-bottom: .25rem;
+}
+.navbar-nav{
+  flex-direction: row;
+}
+.hotcity{
+  margin-bottom: 30px;
+  margin-left: 16px;
+}
+.btn-group{
+  margin-left: 16px;
+  margin-bottom: 30px;
+}
+.btn-secondary{
+  background: none;border-color:#afafb0;color: #000;border-radius: 5px;width: 100px;height: 50px;margin-right: 40px;
+}
+.cards{
+  display: flex;
+  flex-direction: row;
+}

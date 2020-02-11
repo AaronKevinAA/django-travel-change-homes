@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>XXX - 编辑我的个人信息</title>
+    <link rel="stylesheet" href="/static/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="/static/bootstrap/css/bootstrap-grid.css">
+    <link rel="stylesheet" href="/static/bootstrap/css/bootstrap-reboot.css">
+    <link rel="stylesheet" href="/static/css/personinfo.css">
+</head>
+
+<body>
+{% include 'header.html' %}
+<main role="main">
+    <div class="album py-5 bg-light">
+
+        <div class="container" style="min-height: 700px;">
+            <div class="row">
+                <div class="col-3">
+                    <ul class="nav nav-pills nav-justified flex-column" style="background-color: #eeeeee">
+                                               <li class="nav-item">
+                            <a class="nav-link " href="/pinfo/">个人资料</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/pinfo/modify/">编辑个人资料</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="/pinfo/myhome/">编辑我的房屋</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/pinfo/mypublish/">我的发布记录</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/pinfo/mydeal/">我的交易记录</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-9">
+                    <div class="tab-content" id="v-pills-tabContent">
+                        <h4>上传我的房屋信息</h4>
+                        <div class="dir"></div>
+                        <div style="max-width: 450px;">
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="inputGroup-sizing-default">房屋名*</span>
+                                </div>
+                                <input id="name" type="text" class="form-control" aria-label="Sizing example input"
+                                       aria-describedby="inputGroup-sizing-default" placeholder="只用来给您唯一地标识房屋">
+                            </div>
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="inputGroup-sizing-default">房屋详细地址*</span>
+                                </div>
+                                <input id="location" type="text" class="form-control" aria-label="Sizing example input"
+                                       aria-describedby="inputGroup-sizing-default">
+                            </div>
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">房屋面积*</span>
+                                </div>
+                                <input id="area" type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
+                                <div class="input-group-append">
+                                    <span class="input-group-text">平方m</span>
+                                </div>
+                            </div>
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">房屋类型*</span>
+                                </div>
+                                <input id="type1" type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
+                                <div class="input-group-append">
+                                    <span class="input-group-text">室</span>
+                                </div>
+                                <input id="type2" type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
+                                <div class="input-group-append">
+                                    <span class="input-group-text">厅</span>
+                                </div>
+
+                            </div>
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="inputGroupFileAddon01">房屋所有权证明*</span>
+                                </div>
+                                <div class="custom-file">
+                                    <input id="prove" type="file" class="custom-file-input" id="inputGroupFile01"
+                                           aria-describedby="inputGroupFileAddon01">
+                                    <label class="custom-file-label" for="inputGroupFile01">选择文件</label>
+                                </div>
+                            </div>
+                            <p style="font-size: 12px;color: red;margin-top: -10px">*房产证、租房合同等</p>
+                        </div>
+                        <div id="uperr" class="alert alert-danger " role="alert"
+                                 style="display: none;height: 40px;line-height: 18px;"></div>
+                            <div id="upsuccess" class="alert alert-success " role="alert"
+                                 style="display: none;height: 40px;line-height: 18px;"></div>
+                            <div id="uploading" style="display: none" class="spinner-grow text-primary spinner-grow-sm" role="status">
+                                        <span class="sr-only">Loading...</span>
+                                    </div>
+                        <button id="upbtn" type="button" class="btn btn-primary" style="width: 200px">上传等待审核</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</main>
+{% include 'footer.html' %}
+<script src="https://use.fontawesome.com/dd015894c4.js"></script>
+<script src="/static/js/jquery.min.js"></script>
+<script type="text/javascript" src="/static/bootstrap/js/bs-custom-file-input.js"></script>
+<script type="text/javascript">
+    document.addEventListener('DOMContentLoaded', function () {
+        bsCustomFileInput.init()
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.15.0/umd/popper.min.js"
+        integrity="sha384-L2pyEeut/H3mtgCBaUNw7KWzp5n9+4pDQiExs933/5QfaTh8YStYFFkOzSoXjlTb"
+        crossorigin="anonymous"></script>
+<script src="/static/js/myhome_add_info.js"></script>
+<script src="/static/bootstrap/js/bootstrap.js"></script>
+<script src="/static/bootstrap/js/bootstrap.bundle.js"></script>
+<script src="https://cdn.staticfile.org/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+</body>
+</html>

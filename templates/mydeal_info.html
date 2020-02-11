@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>XXX - 我的闲屋记录</title>
+    <link rel="stylesheet" href="/static/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="/static/bootstrap/css/bootstrap-grid.css">
+    <link rel="stylesheet" href="/static/bootstrap/css/bootstrap-reboot.css">
+    <link rel="stylesheet" href="/static/css/personinfo.css">
+</head>
+
+<body>
+{% include 'header.html' %}
+<main role="main">
+    <div class="album py-5 bg-light">
+
+        <div class="container" style="min-height: 700px;">
+            <div class="row">
+                <div class="col-3">
+                    <ul class="nav nav-pills nav-justified flex-column" style="background-color: #eeeeee">
+                                                <li class="nav-item">
+                            <a class="nav-link " href="/pinfo/">个人资料</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/pinfo/modify/">编辑个人资料</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/pinfo/myhome/">编辑我的房屋</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/pinfo/mypublish/">我的发布记录</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="/pinfo/mydeal/">我的交易记录</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-9">
+                    <div class="tab-content" id="v-pills-tabContent">
+                        <h4>我的交易记录</h4>
+                        <div class="dir"></div>
+                        <div class="accordion" id="accordionExample">
+                            <div class="card">
+                                <div class="card-header" id="heading1">
+                                    <h2 class="mb-0">
+                                        <button class="btn btn-link" type="button" data-toggle="collapse"
+                                                data-target="#collapse1" aria-expanded="true"
+                                                aria-controls="collapse1">2019/11/11:您入住了XXX的房屋
+                                        </button>
+                                    </h2>
+                                </div>
+
+                                <div id="collapse1" class="collapse show" aria-labelledby="heading1"
+                                     data-parent="#accordionExample">
+                                    <div class="card-body" style="margin-left: 10px;">
+                                        <p style="margin-bottom: 0"><a style="font-weight: bold">订单状态：</a>已完成</p>
+                                        <p style="margin-bottom: 0"><a style="font-weight: bold">房主昵称：</a>XXX</p>
+                                        <p style="margin-bottom: 0"><a style="font-weight: bold">房主联系方式：</a>138-1234-3322</p>
+                                        <p style="margin-bottom: 0"><a style="font-weight: bold">时间：</a>2019/11/11-2019/12/11</p>
+                                        <p style="margin-bottom: 0"><a style="font-weight: bold">房屋价格：</a>50元/每晚</p>
+                                        <p style="font-size: 12px;margin-top: 10px;margin-bottom: 0px">为保证平台的真实安全性，请给本次订单一次认真的评价，谢谢！ <a href="#" style="font-size: 12px;">点击评价</a></p>
+                                        <a style="font-size: 12px;">对订单有疑问？<a href="#" style="font-size: 12px;">点击此处</a></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-header" id="heading2">
+                                    <h2 class="mb-0">
+                                        <button class="btn btn-link" type="button" data-toggle="collapse"
+                                                data-target="#collapse2" aria-expanded="true"
+                                                aria-controls="collapse2">
+                                            2019/11/11: XXX入住了您的房屋
+                                        </button>
+                                    </h2>
+                                </div>
+
+                                <div id="collapse2" class="collapse show" aria-labelledby="heading2"
+                                     data-parent="#accordionExample">
+                                    <div class="card-body" style="margin-left: 10px;">
+                                        <p style="margin-bottom: 0"><a style="font-weight: bold">订单状态：</a>已完成</p>
+                                        <p style="margin-bottom: 0"><a style="font-weight: bold">客人昵称：</a>XXX</p>
+                                        <p style="margin-bottom: 0"><a style="font-weight: bold">客人联系方式：</a>138-1234-3322</p>
+                                        <p style="margin-bottom: 0"><a style="font-weight: bold">时间：</a>2019/11/11-2019/12/11</p>
+                                        <p style="margin-bottom: 0"><a style="font-weight: bold">房屋价格：</a>50元/每晚</p>
+                                        <p style="font-size: 12px;margin-top: 10px;margin-bottom: 0px">为保证平台的真实安全性，请给本次订单一次认真的评价，谢谢！ <a href="#" style="font-size: 12px;">点击评价</a></p>
+                                        <a style="font-size: 12px;">对订单有疑问？<a href="#" style="font-size: 12px;">点击此处</a></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+{% include 'footer.html' %}
+<script src="https://use.fontawesome.com/dd015894c4.js"></script>
+<script src="/static/js/jquery.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.15.0/umd/popper.min.js"
+        integrity="sha384-L2pyEeut/H3mtgCBaUNw7KWzp5n9+4pDQiExs933/5QfaTh8YStYFFkOzSoXjlTb"
+        crossorigin="anonymous"></script>
+
+<script src="/static/bootstrap/js/bootstrap.js"></script>
+<script src="/static/bootstrap/js/bootstrap.bundle.js"></script>
+<script src="https://cdn.staticfile.org/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+</body>
+</html>
